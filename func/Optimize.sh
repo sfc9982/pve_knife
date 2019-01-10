@@ -5,7 +5,7 @@ RemoveLoginBrand() {
 }
 
 InstallBasicComponent() {
-    apt install vim wget curl htop git axel aria2 -y
+    apt install vim wget curl htop git axel aria2 apt-transport-https ca-certificates curl software-properties-common gnupg2 -y
 }
 
 ReplaceEnterpriseSource() {
@@ -18,14 +18,14 @@ ReplaceEnterpriseSource() {
 
 ReplaceDebianUpdateRepo() {
     cat > /etc/apt/sources.list <<EOF
-deb http://mirrors.aliyun.com/debian/ stretch main non-free contrib
-deb-src http://mirrors.aliyun.com/debian/ stretch main non-free contrib
-deb http://mirrors.aliyun.com/debian-security stretch/updates main
-deb-src http://mirrors.aliyun.com/debian-security stretch/updates main
-deb http://mirrors.aliyun.com/debian/ stretch-updates main non-free contrib
-deb-src http://mirrors.aliyun.com/debian/ stretch-updates main non-free contrib
-deb http://mirrors.aliyun.com/debian/ stretch-backports main non-free contrib
-deb-src http://mirrors.aliyun.com/debian/ stretch-backports main non-free contrib
+deb https://mirrors.aliyun.com/debian/ stretch main non-free contrib
+deb-src https://mirrors.aliyun.com/debian/ stretch main non-free contrib
+deb https://mirrors.aliyun.com/debian-security stretch/updates main
+deb-src https://mirrors.aliyun.com/debian-security stretch/updates main
+deb https://mirrors.aliyun.com/debian/ stretch-updates main non-free contrib
+deb-src https://mirrors.aliyun.com/debian/ stretch-updates main non-free contrib
+deb https://mirrors.aliyun.com/debian/ stretch-backports main non-free contrib
+deb-src https://mirrors.aliyun.com/debian/ stretch-backports main non-free contrib
 EOF
 }
 

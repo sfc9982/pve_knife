@@ -5,7 +5,7 @@ RemoveLoginBrand() {
 }
 
 InstallBasicComponent() {
-    apt install vim wget curl htop git axel aria2 -y
+    apt install vim wget curl htop git axel aria2 apt-transport-https ca-certificates curl software-properties-common gnupg2 -y
 }
 
 AddConfirmForDangerCommand() {

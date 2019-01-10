@@ -3,18 +3,18 @@
 # NodeJS and Yarn
 CheckNodeJS() {
     if command -v npm >/dev/null 2>&1; then 
-  NPMExist=1
+  $NPMExist=1
     else 
-  NPMExist=0
+  $NPMExist=0
     fi
 
     if command -v node >/dev/null 2>&1; then 
-  NodeExist=1
+  $NodeExist=1
     else 
-  NodeExist=0
+  $NodeExist=0
     fi
 
-    if [ $NPMExist = '0' || $NodeExist = '0'] then
+    if [[ $NPMExist -eq 0 || $NodeExist -eq 0]]; then
     echo 'NodeJS not found will install it'
     else
     echo 'NodeJS already installed'

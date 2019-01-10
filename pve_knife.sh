@@ -23,9 +23,9 @@ UpgradeSoftware() {
 #### Start Script
 
 cat << EOF
-********Welcome to use Knife of PVE**   
-********please enter your choise:****
-(1) Optimize your Proxmox
+*****Welcome to use Knife of PVE*****
+*****Please enter your choice:*******
+(1) Proxmox Optimization
 (2) Download ISO
 (3) Install Docker
 (4) Update System

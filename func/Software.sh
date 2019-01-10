@@ -22,22 +22,40 @@ CheckNodeJS() {
     fi
 }
 
-PrepareNodeJS8() {
+PrepareNodeJS() {
     apt-get install -y lsb-release
     curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 }
 
-AddNodeJS8Repo() {
-    echo 'deb https://deb.nodesource.com/node_8.x stretch main' > /etc/apt/sources.list.d/nodesource.list
-    echo 'deb-src https://deb.nodesource.com/node_8.x stretch main' >> /etc/apt/sources.list.d/nodesource.list
+# 注,此处为了兼容多版本,做了字符串拼接
+
+AddNodeJSRepo() {
+    URL1="deb https://deb.nodesource.com/node_"
+    SRCURL1="deb-src https://deb.nodesource.com/node_"
+    VER=$1
+    URL2=".x/ stretch main"
+    echo $URL1$VER$URL2 > /etc/apt/sources.list.d/nodesource.list
+    echo $SRCURL1$VER$URL2 >> /etc/apt/sources.list.d/nodesource.list
+    # 看起来像这样子
+    # It looks like this
+    # deb https://deb.nodesource.com/node_8.x stretch main
+    # deb-src https://deb.nodesource.com/node_8.x stretch main
 }
 
-AddNodeJS8RepoCN() {
-    echo 'deb https://mirrors.tuna.tsinghua.edu.cn/nodesource/deb_8.x/ stretch main' > /etc/apt/sources.list.d/nodesource.list
-    echo 'deb-src https://mirrors.tuna.tsinghua.edu.cn/nodesource/deb_8.x/' >> /etc/apt/sources.list.d/nodesource.list
+AddNodeJSRepoCN() {
+    URL1="deb https://mirrors.tuna.tsinghua.edu.cn/nodesource/deb_"
+    SRCURL1="deb-src https://mirrors.tuna.tsinghua.edu.cn/nodesource/deb_"
+    VER=$1
+    URL2=".x/ stretch main"
+    echo $URL1$VER$URL2 > /etc/apt/sources.list.d/nodesource.list
+    echo $SRCURL1$VER$URL2 >> /etc/apt/sources.list.d/nodesource.list
+    # 看起来像这样子
+    # It looks like this
+    # deb https://mirrors.tuna.tsinghua.edu.cn/nodesource/deb_8.x/ stretch main
+    # deb-src https://mirrors.tuna.tsinghua.edu.cn/nodesource/deb_8.x/ stretch main
 }
 
-InstallNodeJS8 () {
+InstallNodeJS () {
     apt update
     apt-get install -y nodejs
     apt-get install gcc g++ make -y
